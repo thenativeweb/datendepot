@@ -20,8 +20,10 @@
   },
   "devDependencies": {
     "assertthat": "0.5.3",
+    "formats": "0.2.0",
     "grunt": "0.4.5",
     "isolated": "0.1.2",
+    "supertest": "0.15.0",
     "tourism": "0.16.1"
   },
   "repository": {
