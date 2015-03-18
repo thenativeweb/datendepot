@@ -1,4 +1,4 @@
-# datendatendepot
+# datendepot
 
 datendepot is a blob storage middleware.
 
@@ -8,7 +8,26 @@ datendepot is a blob storage middleware.
 
 ## Quick start
 
-First you need to add a reference to datendepot inside of your
+First you need to add a reference to datendepot inside of your application.
+
+```javascript
+var datendepot = require('datendepot');
+```
+
+Then you can add it to your express application by calling its `use` function and handing over the `datendepot` function with the desired storage configuration.
+
+```javascript
+app.use('/blob', daten({
+  storage: 'File',
+  options: {
+    directory: '/tmp/blobs'
+  }
+}));
+```
+
+Now the middleware is running and provides routes for accessing the blog storage. If you want to store data, send the data in the body of a `POST` request to `/blob/`. If storing the data was successful, you will get an id as result.
+
+If you want to fetch the data again, send a `GET` request to `/blob/<id>`.
 
 ## Running the build
 
