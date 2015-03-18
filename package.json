@@ -1,0 +1,39 @@
+{
+  "name": "datendepot",
+  "version": "0.0.0",
+  "description": "datendepot is a blob storage middleware.",
+  "contributors": [
+    {
+      "name": "Golo Roden",
+      "email": "golo.roden@thenativeweb.io"
+    },
+    {
+      "name": "Matthias Wagler",
+      "email": "matthias.wagler@thenativeweb.io"
+    }
+  ],
+  "main": "lib/datendepot.js",
+  "dependencies": {
+    "express": "4.12.3",
+    "require-all": "1.0.0",
+    "uuidv4": "0.3.1"
+  },
+  "devDependencies": {
+    "assertthat": "0.5.3",
+    "grunt": "0.4.5",
+    "tourism": "0.16.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thenativeweb/datendepot.git"
+  },
+  "keywords": [
+    "blob",
+    "express",
+    "file",
+    "image",
+    "middleware",
+    "storage"
+  ],
+  "license": "MIT"
+}
