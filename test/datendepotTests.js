@@ -150,6 +150,54 @@ suite('datendepot', function () {
             });
         });
       });
+
+      test('returns application/octet-stream for data of an unknown type.', function (done) {
+        var id = 'c572bcd4-f68f-4940-a94c-c6b3587dfcf2';
+
+        isolated(path.join(__dirname, 'storage', 'data', id), function (errIsolated, directory) {
+          var middleware;
+
+          assert.that(errIsolated).is.null();
+          middleware = datendepot({
+            storage: 'File',
+            options: {
+              directory: directory
+            }
+          });
+
+          request(middleware)
+            .get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2')
+            .end(function (err, res) {
+              assert.that(err).is.null();
+              assert.that(res.headers['content-type']).is.equalTo('application/octet-stream');
+              done();
+            });
+        });
+      });
+
+      test('returns the appropriate mime type for a known type.', function (done) {
+        var id = '932104d2-9929-40b4-8f3c-47912314da0d';
+
+        isolated(path.join(__dirname, 'storage', 'data', id), function (errIsolated, directory) {
+          var middleware;
+
+          assert.that(errIsolated).is.null();
+          middleware = datendepot({
+            storage: 'File',
+            options: {
+              directory: directory
+            }
+          });
+
+          request(middleware)
+            .get('/' + id)
+            .end(function (err, res) {
+              assert.that(err).is.null();
+              assert.that(res.headers['content-type']).is.equalTo('image/png');
+              done();
+            });
+        });
+      });
     });
 
     suite('POST /', function () {
