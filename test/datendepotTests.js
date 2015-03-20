@@ -59,6 +59,28 @@ suite('datendepot', function () {
 
   suite('middleware', function () {
     suite('GET /<id>', function () {
+      test('returns a 400 if the id is malformed.', function (done) {
+        isolated(function (errIsolated, directory) {
+          var middleware;
+
+          assert.that(errIsolated).is.null();
+          middleware = datendepot({
+            storage: 'File',
+            options: {
+              directory: directory
+            }
+          });
+
+          request(middleware)
+            .get('/foobar-8e7794b0-e66e-4756-b64a-c099ae3722c8')
+            .end(function (err, res) {
+              assert.that(err).is.null();
+              assert.that(res.statusCode).is.equalTo(400);
+              done();
+            });
+        });
+      });
+
       test('returns a 404 if the id is missing.', function (done) {
         isolated(function (errIsolated, directory) {
           var middleware;
