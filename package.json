@@ -1,6 +1,6 @@
 {
   "name": "datendepot",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "datendepot is a blob storage middleware.",
   "contributors": [
     {
