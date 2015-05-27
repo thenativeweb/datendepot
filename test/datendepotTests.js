@@ -71,11 +71,11 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .get('/foobar-8e7794b0-e66e-4756-b64a-c099ae3722c8')
-            .end(function (err, res) {
-              assert.that(err).is.null();
-              assert.that(res.statusCode).is.equalTo(400);
+          request(middleware).
+            get('/foobar-8e7794b0-e66e-4756-b64a-c099ae3722c8').
+            end(function (err) {
+              assert.that(err).is.not.null();
+              assert.that(err.status).is.equalTo(400);
               done();
             });
         });
@@ -93,11 +93,11 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .get('/')
-            .end(function (err, res) {
-              assert.that(err).is.null();
-              assert.that(res.statusCode).is.equalTo(404);
+          request(middleware).
+            get('/').
+            end(function (err) {
+              assert.that(err).is.not.null();
+              assert.that(err.status).is.equalTo(404);
               done();
             });
         });
@@ -115,11 +115,11 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2')
-            .end(function (err, res) {
-              assert.that(err).is.null();
-              assert.that(res.statusCode).is.equalTo(404);
+          request(middleware).
+            get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2').
+            end(function (err) {
+              assert.that(err).is.not.null();
+              assert.that(err.status).is.equalTo(404);
               done();
             });
         });
@@ -139,9 +139,9 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2')
-            .end(function (err, res) {
+          request(middleware).
+            get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2').
+            end(function (err, res) {
               assert.that(err).is.null();
               assert.that(res.statusCode).is.equalTo(200);
               done();
@@ -163,9 +163,9 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2')
-            .end(function (err, res) {
+          request(middleware).
+            get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2').
+            end(function (err, res) {
               assert.that(err).is.null();
               assert.that(res.text).is.equalTo('foobar\n');
               done();
@@ -187,9 +187,9 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2')
-            .end(function (err, res) {
+          request(middleware).
+            get('/c572bcd4-f68f-4940-a94c-c6b3587dfcf2').
+            end(function (err, res) {
               assert.that(err).is.null();
               assert.that(res.headers['content-type']).is.equalTo('application/octet-stream');
               done();
@@ -211,9 +211,9 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .get('/' + id)
-            .end(function (err, res) {
+          request(middleware).
+            get('/' + id).
+            end(function (err, res) {
               assert.that(err).is.null();
               assert.that(res.headers['content-type']).is.equalTo('image/png');
               done();
@@ -235,10 +235,10 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .post('/')
-            .send('foobar')
-            .end(function (err, res) {
+          request(middleware).
+            post('/').
+            send('foobar').
+            end(function (err, res) {
               assert.that(err).is.null();
               assert.that(res.statusCode).is.equalTo(200);
               done();
@@ -258,10 +258,10 @@ suite('datendepot', function () {
             }
           });
 
-          request(middleware)
-            .post('/')
-            .send('foobar')
-            .end(function (err, res) {
+          request(middleware).
+            post('/').
+            send('foobar').
+            end(function (err, res) {
               assert.that(err).is.null();
               assert.that(res.body).is.ofType('object');
               assert.that(formats.isUuid(res.body.id)).is.true();

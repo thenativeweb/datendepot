@@ -40,6 +40,7 @@ suite('File', function () {
     var storage = new File({
       directory: '/'
     });
+
     assert.that(storage).is.ofType('object');
     done();
   });
@@ -50,6 +51,7 @@ suite('File', function () {
         var storage = new File({
           directory: '/'
         });
+
         assert.that(storage.put).is.ofType('function');
         done();
       });
@@ -58,6 +60,7 @@ suite('File', function () {
         var storage = new File({
           directory: '/'
         });
+
         assert.that(function () {
           storage.put();
         }).is.throwing('Id is missing.');
@@ -68,6 +71,7 @@ suite('File', function () {
         var storage = new File({
           directory: '/'
         });
+
         assert.that(function () {
           storage.put(uuid());
         }).is.throwing('Stream is missing.');
@@ -78,6 +82,7 @@ suite('File', function () {
         var storage = new File({
           directory: '/'
         });
+
         assert.that(function () {
           storage.put(uuid(), new PassThrough());
         }).is.throwing('Callback is missing.');
@@ -116,6 +121,7 @@ suite('File', function () {
         var storage = new File({
           directory: '/'
         });
+
         assert.that(storage.get).is.ofType('function');
         done();
       });
@@ -124,6 +130,7 @@ suite('File', function () {
         var storage = new File({
           directory: '/'
         });
+
         assert.that(function () {
           storage.get();
         }).is.throwing('Id is missing.');
@@ -134,6 +141,7 @@ suite('File', function () {
         var storage = new File({
           directory: '/'
         });
+
         assert.that(function () {
           storage.get(uuid());
         }).is.throwing('Callback is missing.');
